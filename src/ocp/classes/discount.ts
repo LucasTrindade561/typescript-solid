@@ -1,0 +1,19 @@
+// Aqui estamos fazendo um padrão de projeto chamado strategy, que basicamente é um conjunto de algoritmos para fazermos discontos em e-commerce
+
+// Fazendo um contrato que todos os discontos devem ser desse jeito
+export abstract class Discount {
+  protected discount = 0;
+  calculate(price: number): number {
+    return +(price - price * this.discount).toFixed(2);
+  }
+}
+
+export class FiftyPercentDiscount extends Discount {
+  protected readonly discount = 0.5;
+}
+
+export class TenPercentDiscount extends Discount {
+  protected readonly discount = 0.1;
+}
+
+export class NoDiscount extends Discount {}
